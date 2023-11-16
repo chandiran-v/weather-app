@@ -31,7 +31,7 @@ export const WeatherApp = () => {
     if (data.cod === "404"){
       return alert("Data not found");
     }
-
+    
     const humidity = document.getElementsByClassName('humidity');
     const wind = document.getElementsByClassName('wind');
     const temperature = document.getElementsByClassName('weatherTemp');
@@ -59,7 +59,15 @@ export const WeatherApp = () => {
   return (
     <div className='container'>
         <div className='top-bar'>
-          <input type='text'  className='cityInput' placeholder='Search'></input>
+          <input type='text'  className='cityInput' placeholder='Search'
+          onKeyDown={(e) => {
+            if (e.key === 'Enter')
+              search();
+          }
+        }
+          >
+
+          </input>
           <div className='searchIcon'  onClick={()=>search()}>
             <img src={searchIcon} style={{height:'30px'}}></img>
           </div>
