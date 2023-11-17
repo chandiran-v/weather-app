@@ -15,11 +15,15 @@ const elementSize = {
   height: '40px',
 }
 
+const clearInput = () => {
+  document.getElementsByClassName('weatherImage').value = '';
+};
+
 export const WeatherApp = () => {
 
   const apiKey = '4777ca0c9cd25f363347fdec07d8bf83';
 
-  const [Icon, setIcon] = useState(clear);
+  const [Icon, setIcon] = useState(sunny);
 
   const  search = async () =>{
     const city = document.getElementsByClassName("cityInput");
@@ -43,9 +47,9 @@ export const WeatherApp = () => {
     location[0].innerHTML = data.name;
 
     if(data.weather[0].icon ==="02d" || data.weather[0].icon ==="02n")
-      setIcon(clouds);
+      setIcon(clear);
     else if(data.weather[0].icon ==="03d" || data.weather[0].icon ==="03n")
-      setIcon(drizzle);
+      setIcon(clouds);
     else if(data.weather[0].icon ==="04d" || data.weather[0].icon ==="04n")
       setIcon(drizzle);
     else if(data.weather[0].icon ==="09d" || data.weather[0].icon ==="09n")
@@ -73,7 +77,7 @@ export const WeatherApp = () => {
           </div>
         </div>
 
-        <div className='weatherImage'>
+        <div className='weatherImage' onClick={clearInput}>
           <img src={Icon}></img>
         </div>
 
