@@ -23,10 +23,7 @@ export const WeatherApp = () => {
 
   const apiKey = '4777ca0c9cd25f363347fdec07d8bf83';
 
-  const [Icon, setIcon] = useState({
-    src: sunny,
-    altText: "A sunny sky icon",
-  });
+  const [Icon, setIcon] = useState(sunny);
 
   const  search = async () =>{
     const city = document.getElementsByClassName("cityInput");
@@ -50,35 +47,17 @@ export const WeatherApp = () => {
     location[0].innerHTML = data.name;
 
     if(data.weather[0].icon ==="02d" || data.weather[0].icon ==="02n")
-      setIcon({
-        src: clear,
-        altText: "A clear sky icon",
-      });
+      setIcon(clear);
     else if(data.weather[0].icon ==="03d" || data.weather[0].icon ==="03n")
-      setIcon({
-        src: clouds,
-        altText: "cloudy icon",
-      });
+      setIcon(clouds);
     else if(data.weather[0].icon ==="04d" || data.weather[0].icon ==="04n")
-      setIcon({
-        src: drizzle,
-        altText: "Drizzling icon",
-      });
+      setIcon(drizzle);
     else if(data.weather[0].icon ==="09d" || data.weather[0].icon ==="09n")
-      setIcon({
-        src: rain,
-        altText: "Rainy icon",
-      });
+      setIcon(rain);
     else if(data.weather[0].icon ==="10d" || data.weather[0].icon ==="10n")
-      setIcon({
-        src: rain,
-        altText: "Rainy icon",
-      });
+      setIcon(rain);
     else if(data.weather[0].icon ==="13d" || data.weather[0].icon ==="13n")
-      setIcon({
-        src: snow,
-        altText: "Snow icon",
-      });
+      setIcon(snow);
   }
 
   return (
@@ -93,12 +72,12 @@ export const WeatherApp = () => {
           >
           </input>
           <div className='searchIcon'  onClick={()=>search()}>
-            <img src={searchIcon} alt='' style={{height:'30px'}}></img>
+            <img src={searchIcon} style={{height:'30px'}}></img>
           </div>
         </div>
 
         <div className='weatherImage' onClick={clearInput}>
-          <img src={Icon} alt=''></img>
+          <img src={Icon}></img>
         </div>
 
         <div className='weatherTemp'>-</div>
@@ -106,7 +85,7 @@ export const WeatherApp = () => {
 
         <div className='weatherData'>
           <div className='element'>
-            <img src={humidity} alt='' style={elementSize}></img>
+            <img src={humidity} style={elementSize}></img>
             <div className='data'>
               <div className='humidity'>-</div>
               <div className='text'>Humidity</div>
@@ -114,7 +93,7 @@ export const WeatherApp = () => {
           </div>
 
           <div className='element'>
-            <img src={wind} alt='' style={elementSize}></img>
+            <img src={wind} style={elementSize}></img>
             <div className='data'>
               <div className='wind'>-</div>
               <div className='text'>Wind Speed</div>
