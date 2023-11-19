@@ -15,6 +15,7 @@ const elementSize = {
   height: '40px',
 }
 
+
 const clearInput = () => {
   document.getElementsByClassName('weatherImage').value = '';
 };
@@ -24,6 +25,11 @@ export const WeatherApp = () => {
   const apiKey = '4777ca0c9cd25f363347fdec07d8bf83';
 
   const [Icon, setIcon] = useState(sunny);
+  const [inputValue, SetinputValue] = useState('');
+
+  const handleClear = () =>{
+    SetinputValue('');
+  }
 
   const  search = async () =>{
     const city = document.getElementsByClassName("cityInput");
@@ -63,15 +69,19 @@ export const WeatherApp = () => {
   return (
     <div className='container'>
         <div className='top-bar'>
-          <input type='text'  className='cityInput' placeholder='Search'
+          <input type='text'  className='cityInput' placeholder='Search' value={inputValue} onChange={(e)=>{
+            SetinputValue(e.target.value);
+          }}
           onKeyDown={(e) => {
-            if (e.key === 'Enter')
+            if (e.key === 'Enter'){
               search();
+              handleClear();
+            }
           }
-        }
+        } 
           >
           </input>
-          <div className='searchIcon'  onClick={()=>search()}>
+          <div className='searchIcon'  onClick={()=>{search(); handleClear();}}>
             <img src={searchIcon} style={{height:'30px'}}></img>
           </div>
         </div>
