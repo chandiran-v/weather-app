@@ -8,7 +8,7 @@
     margin: auto;
     margin-top: 40px;
     border-radius: 12px;
-    background-color: #11052C;
+    background-image: linear-gradient(to bottom right, #070A52, #1D267D);
 }
 
 .top-bar{
